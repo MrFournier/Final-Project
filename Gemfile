@@ -25,7 +25,15 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+# adding gem carrierwave and rmagick to enable uploading
+# images 
+gem 'rmagick'
+gem 'carrierwave'
+
+# Adding pagination gem kaminari
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
