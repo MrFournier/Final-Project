@@ -9,7 +9,7 @@ class UserController < ApplicationController
 
     if @user.save
         session[:user_id] = @user.id
-        # TODO redirect_to home_path, notice: "Welcome to "
+        redirect_to home_path, notice: "Welcome to "
     else
       # TODO render erb new
     end

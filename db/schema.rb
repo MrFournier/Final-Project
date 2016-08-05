@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804195318) do
+ActiveRecord::Schema.define(version: 20160804221218) do
 
   create_table "needs", force: :cascade do |t|
     t.integer  "pet_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160804195318) do
     t.string   "unique_api_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.string   "pressing_need"
     t.index ["need_id"], name: "index_pets_on_need_id"
   end
 
