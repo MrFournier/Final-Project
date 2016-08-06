@@ -1,0 +1,48 @@
+<!--user ends up here after signing up-->
+<!--Dog profiles indexed here-->
+<div class="doglist">
+
+</div>
+<script type="text/javascript">
+// Add other three breeds
+  // REMOVE KEYS BEFORE PUSHING TO REPO
+  var apiCalls = ['http://api.petfinder.com/pet.find?&animal=dog&breed=Corgi&location=90210&key=<%= ENV['PETFINDER_API'] %>&format=json', 'http://api.petfinder.com/pet.find?&animal=dog&breed=Golden Retriever&location=90210&key=<%= ENV['PETFINDER_API'] %>&format=json', 'http://api.petfinder.com/pet.find?&animal=dog&breed=pug&location=90210&key=<%= ENV['PETFINDER_API'] %>&format=json', 'http://api.petfinder.com/pet.find?&animal=dog&breed=Huskey&location=90210&key=<%= ENV['PETFINDER_API'] %>&format=json', 'http://api.petfinder.com/'];
+
+  var breeds = ['Corgi', 'Golden Retriever', 'Pug', 'Huskey'];
+  
+  // TODO fix bug with assigning breed
+  // TODO may need to assign data from api to vars so it can be easily acsessed upon adopt me btn
+  var x = 0;
+  for (j = 0; j <= 3; j++){
+    $.ajax({
+      type : 'GET',
+      data : {},
+      url : apiCalls[j] +'&callback=?',
+      dataType: 'json',
+      success : function(data){
+        console.log(data);
+
+        for(i = 1; i <= 5; i++){
+
+          $('<img src="'+ data['petfinder']['pets']['pet'][i]['media']['photos']['photo'][(data['petfinder']['pets']['pet'][i]['media']['photos']['photo']).length - 1]['$t'] +'" >').appendTo('.doglist');
+
+          $('<p>'+ data['petfinder']['pets']['pet'][i]['name']['$t'] + '</p>').appendTo('.doglist');
+
+          $('<p>'+ breeds[x] +'</p>').appendTo('.doglist');
+
+          $('<p>'+ data['petfinder']['pets']['pet'][i]['sex']['$t'] + '</p>').appendTo('.doglist');
+
+          $('<p>'+ data['petfinder']['pets']['pet'][i]['age']['$t'] + '</p>').appendTo('.doglist');
+
+          $('<p>' + data['petfinder']['pets']['pet'][i]['description']['$t'] +'</p>').appendTo('.doglist');
+
+          $('<button>Adopt Me!</button>').appendTo('.doglist');
+
+          $('<hr>').appendTo('.doglist');
+
+        };
+        x++;
+      }
+    });
+  };
+</script>
