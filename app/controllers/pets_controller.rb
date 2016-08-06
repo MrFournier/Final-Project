@@ -5,7 +5,11 @@ class PetsController < ApplicationController
   end
 
   def create
+    
+  end
 
+  def pressing_need
+    
   end
 
   protected

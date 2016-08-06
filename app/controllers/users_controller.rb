@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   def new 
     @user = User.new
@@ -9,10 +9,14 @@ class UserController < ApplicationController
 
     if @user.save
         session[:user_id] = @user.id
-        redirect_to home_path, notice: "Welcome to "
+        redirect_to user_path_setup, notice: "Welcome to "
     else
       # TODO render erb new
     end
+  end
+
+  def setup
+    render :setup
   end
 
   protected
