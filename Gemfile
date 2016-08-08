@@ -27,13 +27,21 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# adding gem carrierwave and rmagick to enable uploading
+# Add gem carrierwave and rmagick to enable uploading
 # images 
 gem 'rmagick'
 gem 'carrierwave'
 
-# Adding pagination gem kaminari
+# Add pagination gem kaminari
 gem 'kaminari'
+
+# Add petfinder api gem
+gem 'petfinder'
+
+gem 'faraday'
+
+# Add curb gem for rescuegroups gem
+gem 'curb'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
