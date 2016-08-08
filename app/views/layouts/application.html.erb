@@ -6,10 +6,13 @@
 
   <meta charset="utf-8">
 
-  <link scr="/vendor/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+
+  <link src="/vendor/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script href="/app/assets/javascripts/application.js"></script>
+  
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
 </head>
 <body>

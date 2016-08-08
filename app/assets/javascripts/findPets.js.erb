@@ -1,0 +1,56 @@
+// Possibly move <script> from setup into this file
+$(function(){
+  var apiCalls = ['http://api.petfinder.com/pet.find?&animal=dog&breed=Corgi&location=90210&key=<%= ENV['PETFINDER_API'] %>&format=json', 'http://api.petfinder.com/pet.find?&animal=dog&breed=Golden Retriever&location=90210&key=<%= ENV['PETFINDER_API'] %>&format=json', 'http://api.petfinder.com/pet.find?&animal=dog&breed=pug&location=90210&key=<%= ENV['PETFINDER_API'] %>&format=json', 'http://api.petfinder.com/pet.find?&animal=dog&breed=Husky&location=90210&key=<%= ENV['PETFINDER_API'] %>&format=json'];
+
+  var breeds = ['Corgi', 'Golden Retriever', 'Pug', 'Husky'];
+  
+  // TODO may need to assign data from api to vars so it can be easily acsessed upon adopt me btn
+
+  var promises = [];
+  for (j = 0; j <= 3; j++){
+    promises.push(new Promise(function(resolve, reject){
+      $.ajax({
+        type : 'GET',
+        data : {},
+        url : apiCalls[j] +'&callback=?',
+        dataType: 'json',
+        success : function(data){
+          resolve(data);
+        },
+        error : function(xhr, error){
+          reject(error);
+          console.debug(xhr);
+        }
+      });
+    }))
+  };
+
+  Promise.all(promises).then(data => {
+    for(j = 0 ; j <= 3; j++){
+      for(i = 0; i <= 24; i++){
+
+        // Check to make sure the dog has a picture
+        // If there is a picture print the picture
+        if((data[j]['petfinder']['pets']['pet'][i]['media']['photos']) != undefined){
+
+          $('<img src="'+ data[j]['petfinder']['pets']['pet'][i]['media']['photos']['photo'][(data[j]['petfinder']['pets']['pet'][i]['media']['photos']['photo']).length - 1]['$t'] +'" >').appendTo('.doglist');
+        }
+
+        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['name']['$t'] + '</p>').appendTo('.doglist');
+
+        $('<p>'+ breeds[j] +'</p>').appendTo('.doglist');
+
+        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['sex']['$t'] + '</p>').appendTo('.doglist');
+
+        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['age']['$t'] + '</p>').appendTo('.doglist');
+
+        // $('<p>' + data[j]['petfinder']['pets']['pet'][i]['description']['$t'] +'</p>').appendTo('.doglist');
+
+        $('<button>Adopt Me!</button>').appendTo('.doglist');
+
+        $('<hr>').appendTo('.doglist');
+
+      };
+    };
+  });
+});

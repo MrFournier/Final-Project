@@ -1,15 +1,9 @@
-<!-- <head>
-	<link href="vendor/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
-</head> -->
-
 <header>
 	<h1>Rescue Pals!</h1>
 	<div class="btn-group" role="group" aria-label="...">
-	  <button type="button" class="btn btn-default">Login or Sign Up</button>
+		<button type="button" class="btn btn-default" id="lgn">Login or Sign Up</button>
 	</div>
-
-<header>
-
+</header>
 <body>
 	<section id="about">
 		<div class="container">
@@ -17,7 +11,6 @@
 			<p>The Rescue Pals web application was created to enhance the connections between animal lovers and animals who need to be loved. Our goal is to facilitate relationships between real dogs in need of new homes and individuals or families who are open to making those connections.</p>
 		</div>
 	</section>
-
 	<section id="team">
 		<div class="container">
 			<h2>Our Team<h2>
@@ -35,8 +28,10 @@
 			</div>
 		</div>
 	</section>
-<body>
-
+	<div class="modal-container hidden">
+		<%= render 'home/modal' %>
+	</div>
+</body>
 <footer>
 	<p>Powered By: <a href="https://www.petfinder.com/">PetFinder</a>
 </footer>
