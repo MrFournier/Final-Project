@@ -38,7 +38,11 @@ gem 'kaminari'
 # Add petfinder api gem
 gem 'petfinder'
 
+# Add Faraday gem
 gem 'faraday'
+
+# Add gem Json
+gem 'json'
 
 # Add curb gem for rescuegroups gem
 gem 'curb'

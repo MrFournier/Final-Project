@@ -27,14 +27,15 @@ $(function(){
 
 
   var $dogList = $('.doglist');
+
+  configureAdoptionListener($dogList);
+
   Promise.all(promises).then(data => {
 
     $dogList.html('');
 
     for(j = 0 ; j <= 3; j++){
       for(i = 0; i <= 24; i++){
-
-        console.log(data);
 
         var $dogInstance = $('<li class="dog">').attr('data-id', data[j]['petfinder']['pets']['pet'][i]['id']['$t']).appendTo($dogList);
 
@@ -45,9 +46,9 @@ $(function(){
           $('<img src="'+ data[j]['petfinder']['pets']['pet'][i]['media']['photos']['photo'][(data[j]['petfinder']['pets']['pet'][i]['media']['photos']['photo']).length - 1]['$t'] +'" >').appendTo($dogInstance);
         }
 
-        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['name']['$t'] + '</p>').appendTo($dogInstance);
+        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['name']['$t'] + '</p>').attr('data-name', data[j]['petfinder']['pets']['pet'][i]['name']['$t']).appendTo($dogInstance);
 
-        $('<p>'+ breeds[j] +'</p>').appendTo($dogInstance);
+        $('<p>'+ breeds[j] +'</p>').attr('data-breed', breeds[j]).appendTo($dogInstance);
 
         $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['sex']['$t'] + '</p>').appendTo($dogInstance);
 
@@ -60,4 +61,18 @@ $(function(){
       };
     };
   });
+
+  function configureAdoptionListener($dogList){
+    $dogList.on('click', '.dog button', function(){
+      var $dog = $(this).closest('.dog');
+      var dogId = $dog.attr('data-id');
+      var $breed = $dog.find(':nth-child(3)');
+      var breed = $breed.attr('data-breed');
+
+      // Pass dog Id to the controller to make a 
+      // api request to get the dog
+      $.post('/pets', {pet: {dog: dogId, breed: breed}});
+
+    });
+  };
 });
