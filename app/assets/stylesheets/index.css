@@ -1,0 +1,78 @@
+header.h1 {
+  font-family: sans-serif;
+  
+}
+
+.btn-group {
+  
+  display: inline-block;
+}
+
+.btn-default:hover {
+  color: blue;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.about {
+   border: black 5px solid;
+   display: inline-block;
+   border: 10px
+   width: 80%;
+   margin: 5%;
+   padding: 20px;
+}
+
+
+h2 {
+  position: center;
+}
+
+.team {
+  border: black 5px solid;
+  display: inline-block;
+  width: 80%;
+  margin: 5%;
+  padding: 20px;
+  
+}
+
+.team-troy {
+  display: inline-block;
+  padding: 10px;
+
+}
+.team-katy {
+  display: inline-block;
+  padding: 10px;
+}
+
+
+.team-member img {
+  margin: 0 auto;
+  border: 7px solid white;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+h1 {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 75%;
+}
+
+footer {
+  display: inline-block;
+  padding: 10px;
+  margin-left: 4%;
+}

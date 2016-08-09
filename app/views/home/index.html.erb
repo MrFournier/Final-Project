@@ -1,26 +1,35 @@
+<head>
+	<link href="vendor/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+</head>
+
 <header>
 	<h1>Rescue Pals!</h1>
 	<div class="btn-group" role="group" aria-label="...">
-		<button type="button" class="btn btn-default" id="lgn">Login or Sign Up</button>
+	  <button type="button" class="btn-default">Login or Sign Up</button>
 	</div>
-</header>
+
+<header>
+
 <body>
-	<section id="about">
+	<section class="about">
 		<div class="container">
 			<h2> About </h2>
+              <hr>
 			<p>The Rescue Pals web application was created to enhance the connections between animal lovers and animals who need to be loved. Our goal is to facilitate relationships between real dogs in need of new homes and individuals or families who are open to making those connections.</p>
 		</div>
 	</section>
-	<section id="team">
+
+	<section class="team">
 		<div class="container">
 			<h2>Our Team<h2>
-			<div class="team-member">
+             <hr>
+			<div class="team-troy">
 				<img src="">
 				<h4>Troy Fournier</h4>
 				<h5>Back-End Developer</h5>
 				<p>"Man of few words"</p>
 			</div>
-			<div class="team-member">
+			<div class="team-katy">
 				<img src="">
 				<h4>Katarina Atherholt</h4>
 				<h5>Front-End Developer</h5>
@@ -28,10 +37,9 @@
 			</div>
 		</div>
 	</section>
-	<div class="modal-container hidden">
-		<%= render 'home/modal' %>
-	</div>
-</body>
+<body>
+
 <footer>
-	<p>Powered By: <a href="https://www.petfinder.com/">PetFinder</a>
+	<p>Powered By: <a href="https://www.rescuegroups.org">Rescue Groups</a>
 </footer>
+  
