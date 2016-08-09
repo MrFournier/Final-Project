@@ -25,30 +25,37 @@ $(function(){
     }))
   };
 
+
+  var $dogList = $('.doglist');
   Promise.all(promises).then(data => {
+
+    $dogList.html('');
+
     for(j = 0 ; j <= 3; j++){
       for(i = 0; i <= 24; i++){
+
+        console.log(data);
+
+        var $dogInstance = $('<li class="dog">').attr('data-id', data[j]['petfinder']['pets']['pet'][i]['id']['$t']).appendTo($dogList);
 
         // Check to make sure the dog has a picture
         // If there is a picture print the picture
         if((data[j]['petfinder']['pets']['pet'][i]['media']['photos']) != undefined){
 
-          $('<img src="'+ data[j]['petfinder']['pets']['pet'][i]['media']['photos']['photo'][(data[j]['petfinder']['pets']['pet'][i]['media']['photos']['photo']).length - 1]['$t'] +'" >').appendTo('.doglist');
+          $('<img src="'+ data[j]['petfinder']['pets']['pet'][i]['media']['photos']['photo'][(data[j]['petfinder']['pets']['pet'][i]['media']['photos']['photo']).length - 1]['$t'] +'" >').appendTo($dogInstance);
         }
 
-        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['name']['$t'] + '</p>').appendTo('.doglist');
+        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['name']['$t'] + '</p>').appendTo($dogInstance);
 
-        $('<p>'+ breeds[j] +'</p>').appendTo('.doglist');
+        $('<p>'+ breeds[j] +'</p>').appendTo($dogInstance);
 
-        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['sex']['$t'] + '</p>').appendTo('.doglist');
+        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['sex']['$t'] + '</p>').appendTo($dogInstance);
 
-        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['age']['$t'] + '</p>').appendTo('.doglist');
+        $('<p>'+ data[j]['petfinder']['pets']['pet'][i]['age']['$t'] + '</p>').appendTo($dogInstance);
 
-        // $('<p>' + data[j]['petfinder']['pets']['pet'][i]['description']['$t'] +'</p>').appendTo('.doglist');
+        // $('<p>' + data[j]['petfinder']['pets']['pet'][i]['description']['$t'] +'</p>').appendTo($dogInstance);
 
-        $('<button>Adopt Me!</button>').appendTo('.doglist');
-
-        $('<hr>').appendTo('.doglist');
+        $('<button>Adopt Me!</button>').appendTo($dogInstance);
 
       };
     };
