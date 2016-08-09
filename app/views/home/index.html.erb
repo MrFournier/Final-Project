@@ -1,11 +1,7 @@
-<head>
-	<link href="vendor/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
-</head>
-
 <header>
 	<h1>Rescue Pals!</h1>
 	<div class="btn-group" role="group" aria-label="...">
-	  <button type="button" class="btn-default">Login or Sign Up</button>
+	  <button type="button" class="btn-default" id="lgn">Login or Sign Up</button>
 	</div>
 
 <header>
@@ -37,6 +33,9 @@
 			</div>
 		</div>
 	</section>
+	<div class="modal-container hidden">
+		<%= render 'home/modal' %>
+	</div>
 <body>
 
 <footer>
