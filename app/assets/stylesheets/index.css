@@ -1,6 +1,6 @@
-header.h1 {
-  font-family: sans-serif;
-  
+header {
+   margin: 5%;
+   padding: 20px;	
 }
 
 .btn-group {
