@@ -4,7 +4,6 @@ class PetsController < ApplicationController
   def create
     # Make a get request to the api using the petid from the post request
     dog = params[:pet][:dog]
-    # breed = params[:pet]
 
     conn = Faraday.new(:url => 'http://api.petfinder.com')
     response = conn.get ('/pet.get?&key='+ ENV['PETFINDER_API'] +'&id='+ dog +'&format=json')
@@ -50,6 +49,9 @@ class PetsController < ApplicationController
     shelterId = pet_info['shelterId']['$t']
     @pet.shelterId = shelterId
 
+    # Set user that owns the pet
+    @pet.user_id = session[:user_id]
+
     # testing
     puts @pet.name
     puts @pet.breed
@@ -57,12 +59,14 @@ class PetsController < ApplicationController
     puts @pet.age
     puts @pet.shelterId
     puts @pet.unique_api_id
+    puts @pet.id
+    puts @pet.user_id
 
-    # Need the game page to implment this
+    # @user = session[:user_id]
+    # @user.pet_id = 
+
     # if @pet.save
-      # redirect to a page that doesnt exist yet
-      # the game page
-      # redirect_to 
+    #   # TODO Faraday post request to update pet_id in user
     # else
     #   render :setup
     # end

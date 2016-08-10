@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'users/setup', to: 'users#setup'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :update]
 
   resources :pets, only: [:new, :create]
 
