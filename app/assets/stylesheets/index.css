@@ -1,29 +1,36 @@
-header {
-   margin: 5%;
-   padding: 20px;	
+
+.heading {
+  background-image:url('/assets/home.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 318px;
+  width: 100%;
+
 }
 
 .btn-group {
-  
   display: inline-block;
+  float: right;
 }
 
-.btn-default:hover {
-  color: blue;
-}
 
 body {
-  overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .about {
-   border: black 5px solid;
    display: inline-block;
    border: 10px
-   width: 80%;
-   margin: 5%;
+   width: 100%;
+   background-color: #22ab6d;
+}
+
+.container {
+   margin-left:10%;
+   margin-right: 10%;
    padding: 20px;
+   font-size: 110%;
+
 }
 
 
@@ -32,22 +39,28 @@ h2 {
 }
 
 .team {
-  border: black 5px solid;
-  display: inline-block;
-  width: 80%;
-  margin: 5%;
+  display: block;
+  /*margin: 5%;*/
   padding: 20px;
+  width: 100%;
   
 }
 
-.team-troy {
-  display: inline-block;
+.column {
+  display: table-cell;
+  
+}
+
+.troy {
+
   padding: 10px;
+  background-color: #94B0DA;
 
 }
-.team-katy {
-  display: inline-block;
+.katy {
+
   padding: 10px;
+  background-color: #8F91A2;
 }
 
 
