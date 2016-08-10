@@ -1,53 +1,61 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
 <div id="login-overlay" class="modal-dialog">
   <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="modalLabel">Login or Sign Up</h4>
-      </div>
-      <div class="modal-body">
-          <div class="row">
-              <div class="col-xs-6">
-                  <div class="well">
-                      <form id="loginForm" method="POST" action="/login/">
-                          <div class="form-group">
-                              <label for="username" class="control-label">Username</label>
-                              <input type="text" class="form-control" id="username" name="username" value="" required="">
-                          </div>
-                          <div class="form-group">
-                              <label for="password" class="control-label">Password</label>
-                              <input type="password" class="form-control" id="password" name="password" value="" required="">
-                          </div>
-                          <button type="submit" class="btn btn-success btn-block">Login</button>
-                      </form>
-                  </div>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <h4 class="modal-title" id="modalLabel">Login or Sign Up</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="well">
+            <form id="loginForm" method="POST" action="/login/">
+              <div class="form-group">
+                <label for="username" class="control-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="" required="">
               </div>
-              <div class="col-xs-6">
-                  <div class="well">
-                      <form id="signupForm" method="POST" action="/signup/">
-                          <div class="form-group">
-                              <label for="username" class="control-label">Username</label>
-                              <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username">
-                          </div>
-                          <div class="form-group">
-                              <label for="password" class="control-label">Password</label>
-                              <input type="password" class="form-control" id="password" name="password" value="" required title="Please enter your password">
-                          </div>
-<!--                           <div class="form-group">
-                              <label for="password" class="control-label">Postal Code</label>
-                              ADD REGEX FOR POSTAL CODE
-                              <input type="postalcode" class="form-control" id="postalcode" name="postalcode" value="" required="">
-                          </div> -->
-                          <div class="form-group">
-                              <label for="password_confirmation" class="control-label">Password Confirmation</label>
-                              <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" value="" required title="Please enter your password">                            
-                          </div>
-                          <button type="submit" class="btn btn-success btn-block">Sign Up!</button>
-                      </form>
-                  </div>
+              <div class="form-group">
+                <label for="password" class="control-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" value="" required="">
               </div>
+              <button type="submit" class="btn btn-success btn-block">Login</button>
+            </form>
           </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="well">
+            <%= form_for @user do |f| %>
+              <% if @user.errors.any? %>
+                <div>
+                  <%= pluralize(@user.errors.count, "error") %> prevented the account from being created:
+                  <ul>
+                    <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <div class="form-group">
+                <%= f.label "username", "Username" %><br>
+                <%= f.text_field "username" %>
+              </div>
+              <div class="form-group">
+                <%= f.label "password" %><br>
+                <%= f.password_field "password" %>
+              </div>
+              <div class="form-group">
+                <%= f.label "password_confirmation" %><br>
+                <%= f.password_field "password_confirmation" %>
+              </div>
+              <div class="form-group">
+                <%= f.label "email", "Email" %><br>
+                <%= f.text_field "email" %>
+              </div>              
+              <div><%= f.submit "Sign up", class: 'btn btn-success btn-block' %></div>
+            <% end %>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>

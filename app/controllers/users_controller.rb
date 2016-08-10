@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
-
-  def new 
-    @user = User.new
-  end
+  skip_before_action :verify_authenticity_token
 
   def create
     @user = User.new(user_params)
 
     if @user.save
         session[:user_id] = @user.id
-        redirect_to user_path_setup, notice: "Welcome to "
+        redirect_to users_setup_path, notice: "Welcome to Rescue Pals!"
     else
       # TODO render erb new
+      redirect_to '/', notice: 'User creation failed.'
     end
   end
 

@@ -6,9 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :pets, only: [:create]
+  resources :pets, only: [:new, :create]
 
   resources :session
-
-  resources :user
 end
