@@ -66,7 +66,7 @@ class PetsController < ApplicationController
     # @user.pet_id = 
 
     # if @pet.save
-    #   # TODO Faraday post request to update pet_id in user
+    # 
     # else
     #   render :setup
     # end
