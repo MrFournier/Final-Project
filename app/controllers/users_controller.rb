@@ -31,6 +31,10 @@ class UsersController < ApplicationController
     render :setup
   end
 
+  def home
+    render :home
+  end
+
   protected
 
     def user_params

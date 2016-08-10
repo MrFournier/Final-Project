@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       # TODO redirect to game page
-      # redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
+      redirect_to users_home_path, notice: "Welcome back, #{user.username}!"
     else
       flash.now[:alert] = "Log in failed..."
       render :new
