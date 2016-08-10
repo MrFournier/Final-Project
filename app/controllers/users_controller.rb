@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_filter :restrict_access, except: [:create]
 
   def create
+    puts 'users controller'
     @user = User.new(user_params)
+    puts "USER INFO BELOW"
+    puts user_params
 
     if @user.save
         session[:user_id] = @user.id
