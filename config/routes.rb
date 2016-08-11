@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'users/setup', to: 'users#setup'
 
-  get 'users/home', to: 'users#home'
+  get 'users/home', to: 'pets#home'
 
   resources :users, only: [:new, :create, :update]
 
