@@ -63,8 +63,32 @@ class PetsController < ApplicationController
   end
 
   # This may need to be a protected method
+  # Checks the status(value) of every need and returns the most desperate need
   def pressing_need
-    
+    user = session[:user_id]
+    pet = Pet.where(:user_id => user)
+
+    lowestNeed = 0
+    pressing_need = ''
+
+    hunger = hunger(pet)
+    if hunger.status < lowestNeed
+        lowestNeed = hunger.status
+        pressing_need = hunger.need_description
+    end
+
+    sleep = sleep(pet)
+    if sleep.status < lowestNeed
+        lowestNeed = sleep.status
+        pressing_need = sleep.need_description
+    end
+
+    attention(pet)
+    if attention.status < lowestNeed
+        lowestNeed = attention.status
+        pressing_need = attention.need_description
+    end
+    return pressing_need
   end
 
   protected
@@ -85,18 +109,34 @@ class PetsController < ApplicationController
 
     # Methods to get needs
     def hunger(pet)
-        Need.where(:pet_id => pet.id).where(:need_description => 'hunger')
+        hunger = Need.where(:pet_id => pet.id).where(:need_description => 'hunger')
+        checkInRange(hunger)
     end
 
     def sleep(pet)
-       Need.where(:pet_id => pet.id).where(:need_description => 'sleep') 
+       sleep = Need.where(:pet_id => pet.id).where(:need_description => 'sleep')
+       checkInRange(sleep)
     end
 
     def attention(pet)
-        Need.where(:pet_id => pet.id).where(:need_description => 'attention')
+        attention = Need.where(:pet_id => pet.id).where(:need_description => 'attention')
+        checkInRange(attention)
     end
 
     def happiness(pet)
-        Need.where(:pet_id => pet.id).where(:need_description => 'happiness')
+        hapiness = Need.where(:pet_id => pet.id).where(:need_description => 'happiness')
+        checkInRange(happiness)
+    end
+
+    # Check if need value is in range?
+    def checkInRange(need)
+        if need.status < 0
+            need.status = 0
+            need.save
+        end
+        if need.status > 100
+            need.status = 100
+            need.save
+        end
     end
 end
