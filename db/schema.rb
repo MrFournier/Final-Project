@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810182646) do
+ActiveRecord::Schema.define(version: 20160804190702) do
 
   create_table "needs", force: :cascade do |t|
     t.integer  "pet_id"
@@ -22,32 +22,28 @@ ActiveRecord::Schema.define(version: 20160810182646) do
   end
 
   create_table "pets", force: :cascade do |t|
-    t.integer  "need_id"
+    t.integer  "user_id"
     t.string   "name"
     t.string   "breed"
     t.string   "age"
     t.string   "sex"
-    t.string   "description"
     t.boolean  "adopted",       default: false
     t.string   "avatar"
     t.string   "unique_api_id"
+    t.integer  "shelterId"
+    t.string   "pressing_need"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.string   "pressing_need"
-    t.string   "shelter"
-    t.integer  "shelterId"
-    t.integer  "user_id"
-    t.index ["need_id"], name: "index_pets_on_need_id"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
+    t.string   "email"
     t.string   "password_digest"
     t.integer  "reputation",      default: 0
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.string   "email"
   end
 
 end

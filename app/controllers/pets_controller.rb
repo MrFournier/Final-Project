@@ -31,16 +31,16 @@ class PetsController < ApplicationController
 
     # Switch to be used when dog avatars are ready
     # Set avatar for adopted pet
-    # case @pet.breed
-    # when 'Corgi'
-    #   @pet.avatar = corgi avatar
-    # when 'Golden Retriever'
-    #   @pet.avatar = 
-    # when 'Pug'
-    #   @pet.avatar = 
-    # when 'Husky'
-    #   @pet.avatar = 
-    # end
+    case @pet.breed
+    when 'Corgi'
+      @pet.avatar = '/assets/images/corgi.png'
+    when 'Golden Retriever'
+      @pet.avatar = '/assets/images/labhead.png'
+    when 'Pug'
+      @pet.avatar = '/assets/images/pug.png'
+    when 'Husky'
+      @pet.avatar = '/assets/images/husky.png'
+    end
 
     # Set unique petfinder pet id
     petfinderId = pet_info['id']['$t']
@@ -62,6 +62,7 @@ class PetsController < ApplicationController
     end
   end
 
+  # This may need to be a protected method
   def pressing_need
     
   end
@@ -78,10 +79,24 @@ class PetsController < ApplicationController
         needs = ['hunger', 'sleep', 'attention', 'happiness']
         needs.each do |ele|
             need = Need.new(pet_id: pet.id, need_description: ele)
-            need.save
-            pet.need_id = need.id     
+            need.save    
         end
-        pet.save
     end
 
+    # Methods to get needs
+    def hunger(pet)
+        Need.where(:pet_id => pet.id).where(:need_description => 'hunger')
+    end
+
+    def sleep(pet)
+       Need.where(:pet_id => pet.id).where(:need_description => 'sleep') 
+    end
+
+    def attention(pet)
+        Need.where(:pet_id => pet.id).where(:need_description => 'attention')
+    end
+
+    def happiness(pet)
+        Need.where(:pet_id => pet.id).where(:need_description => 'happiness')
+    end
 end
