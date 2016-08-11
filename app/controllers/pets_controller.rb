@@ -62,6 +62,59 @@ class PetsController < ApplicationController
     end
   end
 
+  def home
+    render :home
+  end
+
+  def get_pet
+    user = session[:user_id]
+    pet = Pet.where(:user_id => user)
+    return pet
+  end
+
+  # Method to checktimestamps
+  def checkTimeStamps
+    pet = get_pet()
+
+    petHunger = get_hunger(pet)
+    petSleep = get_sleep(pet)
+    petAttention = get_attention(pet)
+    petHappiness = get_happiness(pet)
+
+    currentTime = Time.now.utc()
+
+    # Currently these checks are over engineered, use second param, on dec methods, of
+    # number of times to make the call only once
+    # Checks
+    timeDiff = currentTime - petHunger.updated_at
+    timeDiff = timeDiff.round
+    if (timeDiff > 10800) && (petHunger.status > 0)
+        n = (timeDiff/10800).floor
+        n = 10 if (n > 10) 
+        # Make call to decrement hunger method
+        dec_hunger(petHunger, n)
+    end
+
+    timeDiff = currentTime - petSleep.updated_at
+    timeDiff = timeDiff.round
+    if (timeDiff > 21600) && (petSleep.status > 0)
+        n = (timeDiff/21600).floor
+        n = 2 if (n > 2)
+        dec_sleep(petSleep, n)
+    end
+
+    timeDiff = currentTime - petAttention
+    timeDiff = timeDiff.round
+    if (timeDiff > 900) && (petAttention.status > 0)
+        n = (timeDiff/900).floor
+        n = 20 if (n > 20)
+        dec_attention(petAttention)
+    end
+
+    # Do something with happiness its going to be a little more complicated
+
+  end
+
   # This may need to be a protected method
   # Checks the status(value) of every need and returns the most desperate need
   def pressing_need
@@ -71,24 +124,48 @@ class PetsController < ApplicationController
     lowestNeed = 0
     pressing_need = ''
 
-    hunger = hunger(pet)
+    hunger = get_hunger(pet)
     if hunger.status < lowestNeed
         lowestNeed = hunger.status
         pressing_need = hunger.need_description
     end
 
-    sleep = sleep(pet)
+    sleep = get_sleep(pet)
     if sleep.status < lowestNeed
         lowestNeed = sleep.status
         pressing_need = sleep.need_description
     end
 
-    attention(pet)
+    attention = get_attention(pet)
     if attention.status < lowestNeed
         lowestNeed = attention.status
         pressing_need = attention.need_description
     end
     return pressing_need
+  end
+
+  def inc_hunger
+    pet = get_pet()
+    hunger = get_hunger(pet)
+    hunger.status += 40
+    hunger = checkInRange(hunger)
+    hunger.save
+  end
+
+  def inc_sleep
+    pet = get_pet()
+    sleep = get_sleep(pet)
+    sleep.status += 50
+    sleep = checkInRange(sleep)
+    sleep.save
+  end
+
+  def inc_attention
+    pet = get_pet()
+    attention = get_attention(pet)
+    attention.status += 5
+    attention = checkInRange(attention)
+    attention.save
   end
 
   protected
@@ -108,35 +185,64 @@ class PetsController < ApplicationController
     end
 
     # Methods to get needs
-    def hunger(pet)
+    def get_hunger(pet)
         hunger = Need.where(:pet_id => pet.id).where(:need_description => 'hunger')
-        checkInRange(hunger)
+        return hunger
     end
 
-    def sleep(pet)
+    def get_sleep(pet)
        sleep = Need.where(:pet_id => pet.id).where(:need_description => 'sleep')
-       checkInRange(sleep)
+       return sleep
     end
 
-    def attention(pet)
+    def get_attention(pet)
         attention = Need.where(:pet_id => pet.id).where(:need_description => 'attention')
-        checkInRange(attention)
+        return attention
     end
 
-    def happiness(pet)
+    def get_happiness(pet)
         hapiness = Need.where(:pet_id => pet.id).where(:need_description => 'happiness')
-        checkInRange(happiness)
+        return happiness
     end
 
-    # Check if need value is in range?
+    # Methods to decrement dog needs
+    def dec_hunger(need, n)
+        need.status = need.status - (10 * n)
+        need = checkInRange(need)
+        need.save
+    end
+
+    def dec_sleep(need, n)
+        need.status = need.status - (50 * n)
+        need = checkInRange(need)
+        need.save
+    end
+
+    def dec_attention(need, n)
+        need.status = need.status - (5 * n)
+        need = checkInRange(need)
+        need.save
+    end
+
+    def dec_happiness(need, n)
+
+    end
+
+    # Methods to incremnet dog happiness
+    def inc_happiness
+
+    end
+
+    # Check if need value is in range
     def checkInRange(need)
         if need.status < 0
             need.status = 0
-            need.save
+            return need
         end
         if need.status > 100
             need.status = 100
-            need.save
+            return need
         end
+        return need
     end
 end

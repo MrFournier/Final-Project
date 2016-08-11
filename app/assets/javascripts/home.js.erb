@@ -1,0 +1,34 @@
+$(function){
+  
+  // make checktime a constant eventually
+
+  // Make ajax call with timer to check if dog need need to be updated
+  $.ajax(){
+    // make get use 'user/home' route and use a checkTimeStamps method in pet
+    // to decrement pet needs
+    $.get('user/home', 'json')
+  }setTimeout(300000)
+
+  // Listeners for interacting with the dog
+  $('.feed').on('click', function(){
+    // increment feed with feed method
+    $.get('user/home', 'json')
+  });
+
+  $('.pet').on('click', function(){
+    // increment attention
+  });
+
+  $('.play').on('click', function(){
+    // incerement attention
+  });
+
+  $('.sleep').on('click', function(){
+    // increment sleep
+  });
+
+  $('.meet').on('click', function(){
+    // make api call to find shelter dog is at
+  });
+
+}
