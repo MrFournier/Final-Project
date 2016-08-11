@@ -30,6 +30,7 @@ class PetsController < ApplicationController
     @pet.adopted = true
 
     # Switch to be used when dog avatars are ready
+    # Set avatar for adopted pet
     # case @pet.breed
     # when 'Corgi'
     #   @pet.avatar = corgi avatar
@@ -52,24 +53,13 @@ class PetsController < ApplicationController
     # Set user that owns the pet
     @pet.user_id = session[:user_id]
 
-    # testing
-    puts @pet.name
-    puts @pet.breed
-    puts @pet.sex
-    puts @pet.age
-    puts @pet.shelterId
-    puts @pet.unique_api_id
-    puts @pet.id
-    puts @pet.user_id
-
-    # @user = session[:user_id]
-    # @user.pet_id = 
-
-    # if @pet.save
-    # 
-    # else
-    #   render :setup
-    # end
+    if @pet.save
+        # call fucntion that set up needs
+        need_create(@pet)
+        redirect_to users_home_path, notice: "Meet your new pal #{@pet.name}!"
+    else
+      render :setup
+    end
   end
 
   def pressing_need
@@ -81,6 +71,17 @@ class PetsController < ApplicationController
     def pet_params
       # Get name, breed, age, sex, desc, unique_api_id, and shelterId from api
       params.require(:pet).permit(:breed)
+    end
+
+    # Create needs for the pet
+    def need_create(pet)
+        needs = ['hunger', 'sleep', 'attention', 'happiness']
+        needs.each do |ele|
+            need = Need.new(pet_id: pet.id, need_description: ele)
+            need.save
+            pet.need_id = need.id     
+        end
+        pet.save
     end
 
 end
