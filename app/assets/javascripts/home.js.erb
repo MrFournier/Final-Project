@@ -1,34 +1,58 @@
-$(function){
+$(function(){
   
   // make checktime a constant eventually
 
   // Make ajax call with timer to check if dog need need to be updated
-  $.ajax(){
-    // make get use 'user/home' route and use a checkTimeStamps method in pet
+  // $.ajax(){
+    // make get use 'user/home' route and use a check_time_tamps method in pet
     // to decrement pet needs
-    $.get('user/home', 'json')
-  }setTimeout(300000)
+  //   $.get('user/home/check_time_tamps', 'json')
+  // }setTimeout(300000)
+
+  // Method that will have setTimeout to update pet needs every 5 mins
+  function watch_dog(){
+    $.get('/users/home/check_time_stamps', function(data){
+      console.log(data);
+      setTimeout(function(){
+        watch_dog();
+      }, 300000);
+    });
+  };
 
   // Listeners for interacting with the dog
   $('.feed').on('click', function(){
     // increment feed with feed method
-    $.get('user/home', 'json')
+    $.get('user/home/feed', function(data){
+      console.log(data);
+    });
   });
 
   $('.pet').on('click', function(){
     // increment attention
+    $.get('users/home/attention', function(data){
+      console.log(data);
+    });
   });
 
   $('.play').on('click', function(){
     // incerement attention
+    $.get('users/home/attention', function(data){
+      console.log(data);
+    });
   });
 
   $('.sleep').on('click', function(){
     // increment sleep
+    $.get('users/home/sleep', function(data){
+      console.log(data);
+    });
   });
 
-  $('.meet').on('click', function(){
-    // make api call to find shelter dog is at
-  });
+  // TODO
+  // $('.meet').on('click', function(){
+  //   // make api call to find shelter dog is at
+  // });
 
-}
+  watch_dog();
+
+});
