@@ -67,12 +67,11 @@ body {
 .page-section-title {
     font-size: 2em;
     line-height: 2;
-    margin-bottom: 1em;
     text-align: center;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .page-section-body {
-    padding: 5%;
     font-size: 1.4em;
     line-height: 1.4;
 }
@@ -87,13 +86,15 @@ body {
 }
 
 .member-name {
-  font-size: 2em;
+  font-size: 1.7em;
+  margin-left: 2em;
 }
 
 .member-image {
     width: 15em;
     height: 15em;
-    border-style: 
+    float: left;
+    border-radius: 50%;
 }
 
 .hero-title {
