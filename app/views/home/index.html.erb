@@ -8,16 +8,18 @@
 	</head>
 	<body>
 		<header role="banner" class="hero">
-			<h1 class="hero-title">Rescue Pals!</h1>
-			<p class="hero-description">Adopt your virtual rescue pal today!</p>
-			<div class="fence" role="presentation"></div>
-			<footer>
-				<% if current_user %>
-				<%= link_to "Logout", session_path("current"), method: :delete, class: "btn-default" %>
-				<% else %>
-				<%= link_to "Log In or Sign Up", id: "lgn", class: "btn-default" %>
-				<% end %>
-			</footer>
+			<div class="hero-content">
+				<img src="images/rplogo.png" alt="Rescue Pals Logo!" class="logo">
+				<footer class="lgn-btn">
+					<% if current_user %>
+					<%= link_to "Logout", session_path("current"), method: :delete, class: "btn-default" %>
+					<% else %>
+					<%= link_to "Log In or Sign Up", id: "lgn", class: "btn-default" %>
+					<% end %>
+				</footer>
+				<div class="fence" role="presentation"></div>
+				<div class="house" role="presentation"></div>
+			</div>
 		</header>
 		<main role="main">
 		<section class="page-section about-us">
@@ -32,7 +34,7 @@
 				<ul class="members">
 					<li class="member">
 						<figure class="member-info">
-							<img src="assets/images/katy.jpeg" alt="" class="member-image">
+							<img src="images/katy.jpeg" alt="" class="member-image">
 							<figcaption class="member-name">Katy</figcaption>
 							<p>Front-End Developer</p>
 							<p>"Mildly obsessed with pastels"</p>
@@ -40,7 +42,7 @@
 					</li>
 					<li class="member">
 						<figure class="member-info">
-							<img src="assets/images/troy.png" alt="" class="member-image">
+							<img src="images/troy.png" alt="" class="member-image">
 							<figcaption class="member-name">Troy</figcaption>
 							<p>Back-End Developer</p>
 							<p>"Man of few words"</p>
@@ -56,7 +58,7 @@
 		<footer role="contentinfo">
 			<div class="footer-container">
 				<p>
-					<small>Copyright 2016 Katy Badass</small>
+					<small>Copyright 2016 Rescue Pals!</small>
 				</p>
 			<!--<div class="footer-container">
 					<%=  %>
