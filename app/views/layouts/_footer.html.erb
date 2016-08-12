@@ -1,4 +1,7 @@
 <!--lets user logout or login on any page-->
 <footer>
 	<p>Powered By: <a href="https://www.petfinder.com">Pet Finder</a> </p>
+  <% if current_user %>
+    <%= link_to "Logout", session_path("current"), method: :delete %>
+  <% end %>
 </footer>
