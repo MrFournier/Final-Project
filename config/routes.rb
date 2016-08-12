@@ -18,5 +18,5 @@ Rails.application.routes.draw do
 
   resources :pets, only: [:new, :create]
 
-  resources :session
+  resources :sessions
 end

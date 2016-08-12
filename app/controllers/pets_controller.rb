@@ -125,7 +125,11 @@ class PetsController < ApplicationController
     puts petAttention.status
 
     # Do something with happiness its going to be a little more complicated
-
+    # Not tested yet
+    # avg = ((petHunger.status + petSleep.status + petAttention.status)/3).round
+    # petHappiness.status = avg
+    # check_in_range(petHappiness)
+    # petHappiness.save
   end
 
   # This may need to be a protected method
