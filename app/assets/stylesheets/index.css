@@ -1,91 +1,116 @@
-
-.heading {
-  background-image:url('/assets/home.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 318px;
-  width: 100%;
-
-}
-
-.btn-group {
-  display: inline-block;
-  float: right;
-}
-
-
 body {
-  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 100%;
 }
 
-.about {
-   display: inline-block;
-   border: 10px
-   width: 100%;
-   background-color: #22ab6d;
+.member {
+    flex: 1;
 }
 
-.container {
-   margin-left:10%;
-   margin-right: 10%;
-   padding: 20px;
-   font-size: 110%;
+.members {
+    display: flex;
+    flex-direction: row;
+}
+
+.hero {
+    background-size: cover;
+    background: #d4fdff;
+    color: #fff;
+    text-align: center;
+}
+
+.hlgn-btn {
+    font-size: 2.5em;
+    color: #09a6f9;
+}
+ 
+.hero-content {
+  z-index: 3;
+  position: relative;
+  box-sizing: border-box;
+  padding: 10%;
 
 }
 
-
-h2 {
-  position: center;
+.logo {
+  width: 30em;
+  height: 18em;
 }
 
-.team {
-  display: block;
-  /*margin: 5%;*/
-  padding: 20px;
-  width: 100%;
-  
+.fence {
+    background-size: cover;
+    background: url(homefence.png) repeat-x;
+    position: absolute;
+    width: 110%;
+    height: 187px;
+    left: -8%;
+    bottom: -20%;
+    z-index: 2
 }
 
-.column {
-  display: table-cell;
-  
+.house {
+    background-size: cover;
+    background: url(housenoshadow.png);
+    position: absolute;
+    right: 0;
+    width: 227px;
+    height: 233px;
+    bottom: -1%;
+    z-index: 1;
+}
+.page-section {
+    background: #2274A5;
+    color: white;
+    padding: 3em;
 }
 
-.troy {
-
-  padding: 10px;
-  background-color: #94B0DA;
-
-}
-.katy {
-
-  padding: 10px;
-  background-color: #8F91A2;
+.page-section-title {
+    font-size: 2em;
+    line-height: 2;
+    margin-bottom: 1em;
+    text-align: center;
 }
 
-
-.team-member img {
-  margin: 0 auto;
-  border: 7px solid white;
+.page-section-body {
+    padding: 5%;
+    font-size: 1.4em;
+    line-height: 1.4;
 }
 
-p {
-  font-size: 14px;
-  line-height: 1.5;
+.about-us {
+    background: #22AB6D;
+    padding-top: 8em;
 }
 
-h1 {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
+.members-section {
+    background: #2274A5;
 }
 
-h5 {
-  font-size: 75%;
+.member-name {
+  font-size: 2em;
 }
 
-footer {
-  display: inline-block;
-  padding: 10px;
-  margin-left: 4%;
+.member-image {
+    width: 15em;
+    height: 15em;
+    border-style: 
+}
+
+.hero-title {
+    font-size: 3.5em;
+    line-height: 2;
+}
+
+.footer-container {
+    background: #2274A5;
+}
+
+small {
+  color:#fff;
+}
+
+@media screen and (max-width: 55em) {
+    .members {
+        display: inherit; /*Allows for responsive columns*/
+    }
 }
