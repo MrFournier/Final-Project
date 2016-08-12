@@ -19,7 +19,7 @@ body {
     text-align: center;
 }
 
-.hlgn-btn {
+.lgn-btn {
     font-size: 2.5em;
     color: #09a6f9;
 }
@@ -113,4 +113,20 @@ small {
     .members {
         display: inherit; /*Allows for responsive columns*/
     }
+}
+
+.modal-container{
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px;  /*Location of the box*/ 
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+}
+
+.hidden{
+  display: none;
 }
