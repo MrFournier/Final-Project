@@ -62,6 +62,7 @@ class PetsController < ApplicationController
     end
   end
 
+  # Might need to move this back to users_controller because of before_filter
   def home
     render :home
   end
@@ -69,11 +70,11 @@ class PetsController < ApplicationController
   def get_pet
     user = session[:user_id]
     pet = Pet.where(:user_id => user)
-    return pet
+    return pet.first
   end
 
-  # Method to checktimestamps
-  def checkTimeStamps
+  # Method to check_time_stamps
+  def check_time_stamps
     pet = get_pet()
 
     petHunger = get_hunger(pet)
@@ -88,28 +89,40 @@ class PetsController < ApplicationController
     # Checks
     timeDiff = currentTime - petHunger.updated_at
     timeDiff = timeDiff.round
+    puts "Hunger time diff " 
+    puts timeDiff
     if (timeDiff > 10800) && (petHunger.status > 0)
         n = (timeDiff/10800).floor
         n = 10 if (n > 10) 
         # Make call to decrement hunger method
         dec_hunger(petHunger, n)
     end
+    puts "Hunger status " 
+    puts petHunger.status
 
     timeDiff = currentTime - petSleep.updated_at
     timeDiff = timeDiff.round
+    puts "Sleep time diff " 
+    puts timeDiff
     if (timeDiff > 21600) && (petSleep.status > 0)
         n = (timeDiff/21600).floor
         n = 2 if (n > 2)
         dec_sleep(petSleep, n)
     end
+    puts "Sleep status " 
+    puts petSleep.status
 
-    timeDiff = currentTime - petAttention
+    timeDiff = currentTime - petAttention.updated_at
     timeDiff = timeDiff.round
+    puts "Attention time diff"
+    puts timeDiff
     if (timeDiff > 900) && (petAttention.status > 0)
         n = (timeDiff/900).floor
         n = 20 if (n > 20)
-        dec_attention(petAttention)
+        dec_attention(petAttention, n)
     end
+    puts "Attention status " 
+    puts petAttention.status
 
     # Do something with happiness its going to be a little more complicated
 
@@ -145,10 +158,9 @@ class PetsController < ApplicationController
   end
 
   def inc_hunger
-    pet = get_pet()
     hunger = get_hunger(pet)
     hunger.status += 40
-    hunger = checkInRange(hunger)
+    hunger = check_in_range(hunger)
     hunger.save
   end
 
@@ -156,7 +168,7 @@ class PetsController < ApplicationController
     pet = get_pet()
     sleep = get_sleep(pet)
     sleep.status += 50
-    sleep = checkInRange(sleep)
+    sleep = check_in_range(sleep)
     sleep.save
   end
 
@@ -164,7 +176,7 @@ class PetsController < ApplicationController
     pet = get_pet()
     attention = get_attention(pet)
     attention.status += 5
-    attention = checkInRange(attention)
+    attention = check_in_range(attention)
     attention.save
   end
 
@@ -187,40 +199,40 @@ class PetsController < ApplicationController
     # Methods to get needs
     def get_hunger(pet)
         hunger = Need.where(:pet_id => pet.id).where(:need_description => 'hunger')
-        return hunger
+        return hunger.first
     end
 
     def get_sleep(pet)
        sleep = Need.where(:pet_id => pet.id).where(:need_description => 'sleep')
-       return sleep
+       return sleep.first
     end
 
     def get_attention(pet)
         attention = Need.where(:pet_id => pet.id).where(:need_description => 'attention')
-        return attention
+        return attention.first
     end
 
     def get_happiness(pet)
-        hapiness = Need.where(:pet_id => pet.id).where(:need_description => 'happiness')
-        return happiness
+        happiness = Need.where(:pet_id => pet.id).where(:need_description => 'happiness')
+        return happiness.first
     end
 
     # Methods to decrement dog needs
     def dec_hunger(need, n)
         need.status = need.status - (10 * n)
-        need = checkInRange(need)
+        need = check_in_range(need)
         need.save
     end
 
     def dec_sleep(need, n)
         need.status = need.status - (50 * n)
-        need = checkInRange(need)
+        need = check_in_range(need)
         need.save
     end
 
     def dec_attention(need, n)
         need.status = need.status - (5 * n)
-        need = checkInRange(need)
+        need = check_in_range(need)
         need.save
     end
 
@@ -234,7 +246,7 @@ class PetsController < ApplicationController
     end
 
     # Check if need value is in range
-    def checkInRange(need)
+    def check_in_range(need)
         if need.status < 0
             need.status = 0
             return need
