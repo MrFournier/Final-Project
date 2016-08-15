@@ -8,31 +8,62 @@ body {
     flex-direction: row;
 }
 
-.hero {
-    background-size: cover;
+.sky{
+    position: relative;
+    background-size: contain;
+    overflow: hidden;
     background: #d4fdff;
     color: #fff;
     text-align: center;
+    width: 100%;
+    height: 40em;
 }
 
-.fence {
-    background-size: cover;
-    background: url(homefence.png) repeat-x;
-    position: absolute;
-    width: 110%;
-    height: 187px;
-    left: -8%;
-    bottom: -20%;
-    z-index: 1;
+.stats-container {
+    background: #d4fdff;
+    height: 5em;    
 }
 
-.house {
-    background-size: cover;
-    background: url(housenoshadow.png);
+.dogsleep {
     position: absolute;
+    bottom: 0;
     right: 0;
-    width: 227px;
-    height: 233px;
-    bottom: -1%;
-    z-index: 0;
+}
+
+.dogfence {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.grass {
+    position: relative;
+    background-color: green;
+    clear: both;
+    width: 100%;
+    height: 11em;
+}
+
+.dogfood {
+    position: absolute;
+    width: 10em;
+    height: 9em;
+    bottom: 0;
+    left: 1em;
+}
+
+.dogpet {
+    position: absolute;
+    width: 10em;
+    height: 9em;
+    bottom: 0;
+    left: 13em;
+}
+
+.dogplay {
+    position: absolute;
+    width: 10em;
+    height: 9em;
+    bottom: 0;
+    left: 25em;
 }

@@ -20,38 +20,33 @@ $(function(){
   };
 
   // Listeners for interacting with the dog
-  $('.feed').on('click', function(){
+  $('.dogfood').on('click', function(){
     // increment feed with feed method
-    $.get('user/home/feed', function(data){
+    $.get('home/feed', function(data){
       console.log(data);
     });
   });
 
-  $('.pet').on('click', function(){
+  $('.dogpet').on('click', function(){
     // increment attention
-    $.get('users/home/attention', function(data){
+    $.get('home/attention', function(data){
       console.log(data);
     });
   });
 
-  $('.play').on('click', function(){
+  $('.dogplay').on('click', function(){
     // incerement attention
-    $.get('users/home/attention', function(data){
+    $.get('home/attention', function(data){
       console.log(data);
     });
   });
 
-  $('.sleep').on('click', function(){
+  $('.dogsleep').on('click', function(){
     // increment sleep
-    $.get('users/home/sleep', function(data){
+    $.get('home/sleep', function(data){
       console.log(data);
     });
   });
-
-  // TODO
-  // $('.meet').on('click', function(){
-  //   // make api call to find shelter dog is at
-  // });
 
   watch_dog();
 
