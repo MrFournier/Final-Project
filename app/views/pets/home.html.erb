@@ -1,38 +1,16 @@
 <!--user ends up here after logging in-->
-
 <!--pet "lives" here and this will link to feeding, playing, etc-->
-
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Rescue Pals!</title>
-		<link rel="stylesheet" href="stylesheets/home.css"/>
-	</head>
-	<body>
-		<header role="banner" class="hero">
-			<div class="hero-content">
-				<div class="fence" role="presentation"></div>
-				<div class="house" role="presentation"></div>
-			</div>
-		</header>
-		<main role="main">
-		<section class="page-section about-us">
-
-		</section>
-		<section class="page-section">
-	
-		</section>
-		</main>
-		<footer role="contentinfo">
-			<div class="footer-container">
-				<p>
-					<small>Copyright 2016 Rescue Pals!</small>
-				</p>
-			<div class="footer-container">
-				<%=  %>
-			</div>
-			</div>
-		</footer>
-	</body>
-</html>
+<body>
+	<div class="sky">
+		<div class="stats-container">
+			<%= render 'pets/pet_stats' %>
+		</div>
+		<%= image_tag 'homefence.png', class: 'dogfence' %>
+		<%=  image_tag 'housenoshadow.png', class: 'dogsleep' %>
+	</div>
+	<div class="grass">
+		<%= image_tag 'feeding.png', class: 'dogfood' %>
+		<%= image_tag 'petting.png', class: 'dogpet' %>
+		<%= image_tag 'playing.png', class: 'dogplay' %>
+	</div>
+</body>

@@ -162,9 +162,11 @@ class PetsController < ApplicationController
   end
 
   def inc_hunger
+    pet = get_pet()
     hunger = get_hunger(pet)
     hunger.status += 40
     hunger = check_in_range(hunger)
+    puts hunger.status
     hunger.save
   end
 
@@ -173,6 +175,7 @@ class PetsController < ApplicationController
     sleep = get_sleep(pet)
     sleep.status += 50
     sleep = check_in_range(sleep)
+    puts sleep.status
     sleep.save
   end
 
@@ -181,6 +184,7 @@ class PetsController < ApplicationController
     attention = get_attention(pet)
     attention.status += 5
     attention = check_in_range(attention)
+    puts attention.status
     attention.save
   end
 
