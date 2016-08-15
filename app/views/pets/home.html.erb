@@ -3,12 +3,16 @@
 <body>
 	<div class="sky">
 		<div class="stats-container">
-			<%= render 'pets/pet_stats' %>
+			<%= render 'pets/pet_stats', locals: {:hunger => @hunger, :sleep => @sleep, :attention => @attention} %>
 		</div>
+		<!-- This is the image of your dog -->
+		<%= image_tag @pet.avatar, class: 'dogavatar'%>
+		<!-- This is the standard background -->
 		<%= image_tag 'homefence.png', class: 'dogfence' %>
 		<%=  image_tag 'housenoshadow.png', class: 'dogsleep' %>
 	</div>
 	<div class="grass">
+		<!-- These are the images to click on to increment dog stats -->
 		<%= image_tag 'feeding.png', class: 'dogfood' %>
 		<%= image_tag 'petting.png', class: 'dogpet' %>
 		<%= image_tag 'playing.png', class: 'dogplay' %>

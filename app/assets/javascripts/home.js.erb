@@ -12,7 +12,9 @@ $(function(){
   // Method that will have setTimeout to update pet needs every 5 mins
   function watch_dog(){
     $.get('/users/home/check_time_stamps', function(data){
-      console.log(data);
+      $('.stats-container').load('home', function(data){
+        // console.log(data);
+      });
       setTimeout(function(){
         watch_dog();
       }, 300000);
@@ -23,28 +25,36 @@ $(function(){
   $('.dogfood').on('click', function(){
     // increment feed with feed method
     $.get('home/feed', function(data){
-      console.log(data);
+      $('.stats-container').load('home', function(data){
+        // console.log(data);
+      });
     });
   });
 
   $('.dogpet').on('click', function(){
     // increment attention
     $.get('home/attention', function(data){
-      console.log(data);
+      $('.stats-container').load('home', function(data){
+        // console.log(data);
+      });
     });
   });
 
   $('.dogplay').on('click', function(){
     // incerement attention
     $.get('home/attention', function(data){
-      console.log(data);
+      $('.stats-container').load('home', function(data){
+        // console.log(data);
+      });
     });
   });
 
   $('.dogsleep').on('click', function(){
     // increment sleep
     $.get('home/sleep', function(data){
-      console.log(data);
+      $('.stats-container').load('home', function(data){
+        // console.log(data);
+      });
     });
   });
 
