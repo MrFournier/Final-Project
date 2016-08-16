@@ -12,7 +12,9 @@ $(function(){
   // Method that will have setTimeout to update pet needs every 5 mins
   function watch_dog(){
     $.get('/users/home/check_time_stamps', function(data){
-      console.log(data);
+      $('.stats-container').load('home', function(data){
+        // console.log(data);
+      });
       setTimeout(function(){
         watch_dog();
       }, 300000);
@@ -20,38 +22,53 @@ $(function(){
   };
 
   // Listeners for interacting with the dog
-  $('.feed').on('click', function(){
+  $('.dogfood').on('click', function(){
     // increment feed with feed method
-    $.get('user/home/feed', function(data){
-      console.log(data);
+    $.get('home/feed', function(data){
+      $('.gif-container').addClass('eating').removeClass('hidden');
+      setTimeout(function(){
+        $('.stats-container').load('home', function(data){
+          $('.gif-container').addClass('hidden').removeClass('eating');
+        });         
+      }, 5000);
     });
   });
 
-  $('.pet').on('click', function(){
+  $('.dogpet').on('click', function(){
     // increment attention
-    $.get('users/home/attention', function(data){
-      console.log(data);
+    $.get('home/attention', function(data){
+      $('.gif-container').addClass('petting').removeClass('hidden');
+      setTimeout(function(){
+        $('.stats-container').load('home', function(data){
+          $('.gif-container').addClass('hidden').removeClass('petting');
+        });        
+      }, 5000)
     });
   });
 
-  $('.play').on('click', function(){
+  $('.dogplay').on('click', function(){
     // incerement attention
-    $.get('users/home/attention', function(data){
-      console.log(data);
+    $.get('home/attention', function(data){
+      $('.gif-container').addClass('playing').removeClass('hidden');
+      setTimeout(function(){
+        $('.stats-container').load('home', function(data){
+          $('.gif-container').addClass('hidden').removeClass('playing');
+        });        
+      }, 5000)
     });
   });
 
-  $('.sleep').on('click', function(){
+  $('.dogsleep').on('click', function(){
     // increment sleep
-    $.get('users/home/sleep', function(data){
-      console.log(data);
+    $.get('home/sleep', function(data){
+      $('.gif-container').addClass('sleeping').removeClass('hidden');
+      setTimeout(function(){
+        $('.stats-container').load('home', function(data){
+          $('.gif-container').addClass('hidden').removeClass('playing');
+        });        
+      }, 5000)
     });
   });
-
-  // TODO
-  // $('.meet').on('click', function(){
-  //   // make api call to find shelter dog is at
-  // });
 
   watch_dog();
 

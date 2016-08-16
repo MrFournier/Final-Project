@@ -8,34 +8,106 @@ body {
     flex-direction: row;
 }
 
-.hero {
+.hidden {
+    display: none;
+}
+
+.gif-container {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+
+.eating {
+    background-image: url('gifs/food.gif');
+    background-repeat: no-repeat;
     background-size: cover;
+}
+
+.petting {
+    background-image: url('gifs/pet.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.playing {
+    background-image: url('gifs/fetch.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sleeping {
+    background-image: url('gifs/sleep.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sky{
+    position: relative;
+    background-size: contain;
+    overflow: hidden;
     background: #d4fdff;
     color: #fff;
     text-align: center;
+    width: 100%;
+    height: 40em;
 }
 
-.hero-info {
-    height: 15em;
-}
-.fence {
-    background-size: cover;
-    background: url(homefence.png) repeat-x;
-    position: absolute;
-    width: 110%;
-    height: 187px;
-    left: -8%;
-    bottom: -20%;
-    z-index: 2
+
+.stats-container {
+    background: #d4fdff;
+    height: 5em;    
 }
 
-.house {
-    background-size: cover;
-    background: url(housenoshadow.png);
+.dogavatar {
     position: absolute;
+    bottom: 0;
+    left: 1em;
+    z-index: 2;
+}
+
+.dogsleep {
+    position: absolute;
+    bottom: 0;
     right: 0;
-    width: 227px;
-    height: 233px;
-    bottom: -1%;
-    z-index: 1;
+}
+
+.dogfence {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.grass {
+    position: relative;
+    background-color: green;
+    clear: both;
+    width: 100%;
+    height: 11em;
+}
+
+.dogfood {
+    position: absolute;
+    width: 10em;
+    height: 9em;
+    bottom: 0;
+    left: 1em;
+}
+
+.dogpet {
+    position: absolute;
+    width: 10em;
+    height: 9em;
+    bottom: 0;
+    left: 13em;
+}
+
+.dogplay {
+    position: absolute;
+    width: 10em;
+    height: 9em;
+    bottom: 0;
+    left: 25em;
 }

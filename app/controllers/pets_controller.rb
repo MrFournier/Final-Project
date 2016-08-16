@@ -33,13 +33,13 @@ class PetsController < ApplicationController
     # Set avatar for adopted pet
     case @pet.breed
     when 'Corgi'
-      @pet.avatar = '/assets/images/corgi.png'
+      @pet.avatar = 'corgi.png'
     when 'Golden Retriever'
-      @pet.avatar = '/assets/images/labhead.png'
+      @pet.avatar = 'lab.png'
     when 'Pug'
-      @pet.avatar = '/assets/images/pug.png'
+      @pet.avatar = 'pug.png'
     when 'Husky'
-      @pet.avatar = '/assets/images/husky.png'
+      @pet.avatar = 'husky.png'
     end
 
     # Set unique petfinder pet id
@@ -64,6 +64,10 @@ class PetsController < ApplicationController
 
   # Might need to move this back to users_controller because of before_filter
   def home
+    @pet = get_pet()
+    @hunger = get_hunger(@pet)
+    @sleep = get_sleep(@pet)
+    @attention = get_attention(@pet)
     render :home
   end
 
@@ -116,8 +120,8 @@ class PetsController < ApplicationController
     timeDiff = timeDiff.round
     puts "Attention time diff"
     puts timeDiff
-    if (timeDiff > 900) && (petAttention.status > 0)
-        n = (timeDiff/900).floor
+    if (timeDiff > 300) && (petAttention.status > 0)
+        n = (timeDiff/300).floor
         n = 20 if (n > 20)
         dec_attention(petAttention, n)
     end
@@ -162,9 +166,11 @@ class PetsController < ApplicationController
   end
 
   def inc_hunger
+    pet = get_pet()
     hunger = get_hunger(pet)
     hunger.status += 40
     hunger = check_in_range(hunger)
+    puts hunger.status
     hunger.save
   end
 
@@ -173,6 +179,7 @@ class PetsController < ApplicationController
     sleep = get_sleep(pet)
     sleep.status += 50
     sleep = check_in_range(sleep)
+    puts sleep.status
     sleep.save
   end
 
@@ -181,6 +188,7 @@ class PetsController < ApplicationController
     attention = get_attention(pet)
     attention.status += 5
     attention = check_in_range(attention)
+    puts attention.status
     attention.save
   end
 
