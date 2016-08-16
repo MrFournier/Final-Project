@@ -1,6 +1,9 @@
 <!--user ends up here after logging in-->
 <!--pet "lives" here and this will link to feeding, playing, etc-->
 <body>
+	<div class="gif-container hidden">
+		
+	</div>
 	<div class="sky">
 		<div class="stats-container">
 			<%= render 'pets/pet_stats', locals: {:hunger => @hunger, :sleep => @sleep, :attention => @attention} %>
