@@ -1,7 +1,20 @@
-li {
+.dog {
+	float: left;
+	clear: left;
 	display: inline-block;
+	width: 80%;
+	margin: 2em;
+	background: lightgrey;
 }
 
-div.doglist {
+/*write if statement for data-breed to put dog graphics*/
+
+.dog img {
+	width: 10em;
+	height: 100%;
+
+}
+
+.doglist {
 
 }
