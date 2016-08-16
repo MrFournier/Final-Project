@@ -8,6 +8,42 @@ body {
     flex-direction: row;
 }
 
+.hidden {
+    display: none;
+}
+
+.gif-container {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+
+.eating {
+    background-image: url('gifs/food.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.petting {
+    background-image: url('gifs/pet.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.playing {
+    background-image: url('gifs/fetch.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sleeping {
+    background-image: url('gifs/sleep.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .sky{
     position: relative;
     background-size: contain;

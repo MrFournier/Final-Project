@@ -25,36 +25,48 @@ $(function(){
   $('.dogfood').on('click', function(){
     // increment feed with feed method
     $.get('home/feed', function(data){
-      $('.stats-container').load('home', function(data){
-        // console.log(data);
-      });
+      $('.gif-container').addClass('eating').removeClass('hidden');
+      setTimeout(function(){
+        $('.stats-container').load('home', function(data){
+          $('.gif-container').addClass('hidden').removeClass('eating');
+        });         
+      }, 5000);
     });
   });
 
   $('.dogpet').on('click', function(){
     // increment attention
     $.get('home/attention', function(data){
-      $('.stats-container').load('home', function(data){
-        // console.log(data);
-      });
+      $('.gif-container').addClass('petting').removeClass('hidden');
+      setTimeout(function(){
+        $('.stats-container').load('home', function(data){
+          $('.gif-container').addClass('hidden').removeClass('petting');
+        });        
+      }, 5000)
     });
   });
 
   $('.dogplay').on('click', function(){
     // incerement attention
     $.get('home/attention', function(data){
-      $('.stats-container').load('home', function(data){
-        // console.log(data);
-      });
+      $('.gif-container').addClass('playing').removeClass('hidden');
+      setTimeout(function(){
+        $('.stats-container').load('home', function(data){
+          $('.gif-container').addClass('hidden').removeClass('playing');
+        });        
+      }, 5000)
     });
   });
 
   $('.dogsleep').on('click', function(){
     // increment sleep
     $.get('home/sleep', function(data){
-      $('.stats-container').load('home', function(data){
-        // console.log(data);
-      });
+      $('.gif-container').addClass('sleeping').removeClass('hidden');
+      setTimeout(function(){
+        $('.stats-container').load('home', function(data){
+          $('.gif-container').addClass('hidden').removeClass('playing');
+        });        
+      }, 5000)
     });
   });
 
