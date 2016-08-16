@@ -15,6 +15,9 @@ body {
     text-align: center;
 }
 
+.hero-content {
+    height: 15em;
+}
 .fence {
     background-size: cover;
     background: url(homefence.png) repeat-x;
