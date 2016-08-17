@@ -81,8 +81,9 @@ body {
     padding-top: 8em;
 }
 
-.members-section {
+.members {
     background: #2274A5;
+    list-style: none;
 }
 
 .member-name {
