@@ -1,72 +1,82 @@
 $(function(){
   
+  var check = 300000;
+  var foodTime = 6000;
+  var petTime = 5000;
+  var playTime = 8000;
+  var sleepTime = 5000;
+
   // make checktime a constant eventually
-
-  // Make ajax call with timer to check if dog need need to be updated
-  // $.ajax(){
-    // make get use 'user/home' route and use a check_time_tamps method in pet
-    // to decrement pet needs
-  //   $.get('user/home/check_time_tamps', 'json')
-  // }setTimeout(300000)
-
   // Method that will have setTimeout to update pet needs every 5 mins
   function watch_dog(){
     $.get('/users/home/check_time_stamps', function(data){
-      $('.stats-container').load('home', function(data){
-        // console.log(data);
+      $('.stats-container').load('home .petstats', function(data){
+
       });
       setTimeout(function(){
         watch_dog();
-      }, 300000);
+      }, check);
     });
   };
 
   // Listeners for interacting with the dog
   $('.dogfood').on('click', function(){
+    $('.interaction').attr('disabled');    
     // increment feed with feed method
     $.get('home/feed', function(data){
       $('.gif-container').addClass('eating').removeClass('hidden');
       setTimeout(function(){
-        $('.stats-container').load('home', function(data){
+        $('.stats-container').load('home .petstats', function(data){
+          $('.interaction').removeAttr('disabled');
+
           $('.gif-container').addClass('hidden').removeClass('eating');
         });         
-      }, 5000);
+      }, foodTime);
     });
   });
 
   $('.dogpet').on('click', function(){
+    $('.interaction').attr('disabled');    
     // increment attention
     $.get('home/attention', function(data){
       $('.gif-container').addClass('petting').removeClass('hidden');
       setTimeout(function(){
-        $('.stats-container').load('home', function(data){
+        $('.stats-container').load('home .petstats', function(data){
+          $('.interaction').removeAttr('disabled');
+
           $('.gif-container').addClass('hidden').removeClass('petting');
         });        
-      }, 5000)
+      }, petTime)
     });
   });
 
   $('.dogplay').on('click', function(){
+    $('.interaction').attr('disabled');    
     // incerement attention
     $.get('home/attention', function(data){
       $('.gif-container').addClass('playing').removeClass('hidden');
       setTimeout(function(){
-        $('.stats-container').load('home', function(data){
+        $('.stats-container').load('home .petstats', function(data){
+          $('.interaction').removeAttr('disabled');
+
           $('.gif-container').addClass('hidden').removeClass('playing');
         });        
-      }, 5000)
+      }, playTime)
     });
   });
 
   $('.dogsleep').on('click', function(){
+    $('.interaction').attr('disabled');    
     // increment sleep
     $.get('home/sleep', function(data){
       $('.gif-container').addClass('sleeping').removeClass('hidden');
       setTimeout(function(){
-        $('.stats-container').load('home', function(data){
+        $('.stats-container').load('home .petstats', function(data){
+          $('.interaction').removeAttr('disabled');
+
           $('.gif-container').addClass('hidden').removeClass('playing');
         });        
-      }, 5000)
+      }, sleepTime)
     });
   });
 
