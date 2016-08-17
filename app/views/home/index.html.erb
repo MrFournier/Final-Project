@@ -1,58 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Rescue Pals!</title>
-		<link rel="stylesheet" href="stylesheets/index.css"/>
-	</head>
-	<body>
-		<div class="modal-container hidden">
-			<%= render 'home/modal', locals: {user: @user} %>
-		</div>	
-		<header role="banner" class="hero">
-			<div class="hero-content">
-				<img src="images/rplogo.png" alt="Rescue Pals Logo!" class="logo">
-				<footer class="lgn-btn">
-					<% if current_user %>
-						<%= link_to "Logout", session_path("current"), method: :delete %>
-					<% else %>
-						<button class="btn-default" id="lgn">Login or Sign up</button>
-					<% end %>
-				</footer>
-				<div class="fence" role="presentation"></div>
-				<div class="house" role="presentation"></div>
-			</div>
-		</header>
-		<main role="main">
-		<section class="page-section about-us">
-			<h1 class="page-section-title">About Us</h1>
-			<div class="page-section-body">
-				<p>The Rescue Pals web application was created to enhance the connections between animal lovers and animals who need to be loved. Our goal is to facilitate relationships between real dogs in need of new homes and individuals or families who are open to making those connections.</p>
-			</div>
-		</section>
-		<section class="page-section">
-			<h1 class="page-section-title">Team Members</h1>
-			<div class="page-section-body">
-				<ul class="members">
-					<li class="member">
-						<figure class="member-info">
-							<img src="images/katy.jpeg" alt="" class="member-image">
-							<figcaption class="member-name">Katy</figcaption>
-							<p>Front-End Developer</p>
-							<p>"Mildly obsessed with pastels"</p>
-						</figure>
-					</li>
-					<li class="member">
-						<figure class="member-info">
-							<img src="images/troy.png" alt="" class="member-image">
-							<figcaption class="member-name">Troy</figcaption>
-							<p>Full Stack Developer</p>
-							<p>"Man of few words"</p>
-						</figure>
-					</li>
-				</ul>
-			</div>
-		</section>
-		</main>
-	</body>
-</html>
+<div class="modal-container hidden">
+	<%= render 'home/modal', locals: {user: @user} %>
+</div>	
+<header role="banner" class="hero">
+	<div class="hero-content">
+		<img src="images/rplogo.png" alt="Rescue Pals Logo!" class="logo">
+		<footer class="lgn-btn">
+			<% if current_user %>
+				<%= link_to "Logout", session_path("current"), method: :delete %>
+			<% else %>
+				<button class="btn-default" id="lgn">Login or Sign up</button>
+			<% end %>
+		</footer>
+		<div class="fence" role="presentation"></div>
+		<div class="house" role="presentation"></div>
+	</div>
+</header>
+<main role="main">
+<section class="page-section about-us">
+	<h1 class="page-section-title">About Us</h1>
+	<div class="page-section-body">
+		<p>The Rescue Pals web application was created to enhance the connections between animal lovers and animals who need to be loved. Our goal is to facilitate relationships between real dogs in need of new homes and individuals or families who are open to making those connections.</p>
+	</div>
+</section>
+<section class="page-section">
+	<h1 class="page-section-title">Team Members</h1>
+	<div class="page-section-body">
+		<ul class="members">
+			<li class="member">
+				<figure class="member-info">
+					<img src="images/katy.jpeg" alt="" class="member-image">
+					<figcaption class="member-name">Katy</figcaption>
+					<p>Front-End Developer</p>
+					<p>"Mildly obsessed with pastels"</p>
+				</figure>
+			</li>
+			<li class="member">
+				<figure class="member-info">
+					<img src="images/troy.png" alt="" class="member-image">
+					<figcaption class="member-name">Troy</figcaption>
+					<p>Full Stack Developer</p>
+					<p>"Man of few words"</p>
+				</figure>
+			</li>
+		</ul>
+	</div>
+</section>
+</main>

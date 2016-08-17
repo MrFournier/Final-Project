@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= stub 'pets'
 //= require bootstrap.min.js
