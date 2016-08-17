@@ -1,24 +1,21 @@
 <!--user ends up here after logging in-->
 <!--pet "lives" here and this will link to feeding, playing, etc-->
-
-<body>
-	<div class="gif-container hidden">
-		
+<div class="gif-container hidden">
+	
+</div>
+<div class="sky">
+	<div class="stats-container">
+		<%= render 'pets/pet_stats', locals: {:hunger => @hunger, :sleep => @sleep, :attention => @attention} %>
 	</div>
-	<div class="sky">
-		<div class="stats-container">
-			<%= render 'pets/pet_stats', locals: {:hunger => @hunger, :sleep => @sleep, :attention => @attention} %>
-		</div>
-		<!-- This is the image of your dog -->
-		<%= image_tag @pet.avatar, class: 'dogavatar'%>
-		<!-- This is the standard background -->
-		<%= image_tag 'homefence.png', class: 'dogfence' %>
-		<%=  image_tag 'housenoshadow.png', class: 'dogsleep' %>
-	</div>
-	<div class="grass">
-		<!-- These are the images to click on to increment dog stats -->
-		<%= image_tag 'feeding.png', class: 'dogfood' %>
-		<%= image_tag 'petting.png', class: 'dogpet' %>
-		<%= image_tag 'playing.png', class: 'dogplay' %>
-	</div>
-</body>
+	<!-- This is the image of your dog -->
+	<%= image_tag @pet.avatar, class: 'dogavatar'%>
+	<!-- This is the standard background -->
+	<%= image_tag 'homefence.png', class: 'dogfence' %>
+	<%=  image_tag 'housenoshadow.png', class: 'dogsleep interaction' %>
+</div>
+<div class="grass">
+	<!-- These are the images to click on to increment dog stats -->
+	<%= image_tag 'feeding.png', class: 'dogfood interaction' %>
+	<%= image_tag 'petting.png', class: 'dogpet interaction' %>
+	<%= image_tag 'playing.png', class: 'dogplay interaction' %>
+</div>
