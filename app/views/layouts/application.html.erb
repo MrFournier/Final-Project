@@ -18,9 +18,9 @@
 
 </head>
 <body>
-<% flash.each do |key, value| %>
-  <%= content_tag(:div, value) %>
-<% end %>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value) %>
+  <% end %>
   <%= yield %>
   <%= render 'layouts/footer' %>
 </body>

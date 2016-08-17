@@ -1,0 +1,11 @@
+<!-- Partial that will be reloaded when pet status get updated -->
+<div class="petstats">
+  <label style="color:black;">Hunger</label>
+  <progress value="<%= @hunger.status %>" max="100" id="hunger"></progress>
+
+  <label style="color:black;">Sleep</label>
+  <progress value="<%= @sleep.status %>" max="100" id="sleep"></progress>
+
+  <label style="color:black;">Attention</label>
+  <progress value="<%= @attention.status %>" max="100" id="attention"></progress>
+</div>
