@@ -55,6 +55,13 @@ body {
     height: 30em;
 }
 
+.text {
+    position: absolute;
+    height: 15em;
+    width: auto;
+    left: 15em;
+    top: 3em;
+}
 
 .stats-container {
     background: #d4fdff;

@@ -7,6 +7,7 @@
 	<div class="stats-container">
 		<%= render 'pets/pet_stats', locals: {:hunger => @hunger, :sleep => @sleep, :attention => @attention} %>
 	</div>
+	<%= image_tag 'text.png' , class: 'text interaction' %>
 	<!-- This is the image of your dog -->
 	<%= image_tag @pet.avatar, class: 'dogavatar'%>
 	<!-- This is the standard background -->
