@@ -1,6 +1,6 @@
 <!--lets user logout on any page-->
-<footer style=" position: fixed; bottom: 0; background-color: #BFEDC1; color: white; width: 100%;">
-	<p><strong>Powered By: <a href="https://www.petfinder.com">Pet Finder</a> </strong></p>
+<footer style=" position: fixed; bottom: 0; background-color: #22AB6D; border-top: solid .3em white; color: white; width: 100%;">
+	<p style="position: inline"><strong>Powered By: <a href="https://www.petfinder.com">Pet Finder</a> </strong></p>
 	<button>
 		<% if current_user %>
     		<%= link_to "Logout", session_path("current"), method: :delete %>
