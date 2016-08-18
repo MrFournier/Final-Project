@@ -2,20 +2,43 @@
 	float: left;
 	clear: left;
 	display: inline-block;
-	width: 80%;
+	width: 90%;
 	margin: 2em;
 	background: lightgrey;
-	padding: 1em;
+	padding: 3em;
+	border-radius: 25px;
 }
 
 /*write if statement for data-breed to put dog graphics*/
 
 .dog img {
-	width: 5em;
-	height: 100%;
+	width: 11em;
+	height: 11em;
+	float: right;
+	image-rendering: auto;
+	border: solid 1em #C17767;
+	border-radius: 50%;
+	margin-top: 1em;
 
 }
 
-.doglist {
+p:nth-child(2) {
+    font-size: 3em;
+    text-transform: capitalize;
+}
 
+p:nth-child(3) {
+    font-size: 2em;
+}
+
+p:nth-child(4) {
+    font-size: 1em;
+}
+
+p:nth-child(5) {
+    font-size: 1em;
+
+}
+button {
+	text-align: center;
 }

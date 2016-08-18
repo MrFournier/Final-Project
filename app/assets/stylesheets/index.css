@@ -96,6 +96,7 @@ body {
     height: 15em;
     float: left;
     border-radius: 50%;
+    margin: 1em;
 }
 
 .hero-title {

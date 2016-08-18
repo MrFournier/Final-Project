@@ -1,9 +1,11 @@
 <!--lets user logout on any page-->
-<footer style=" position: fixed; bottom: 0; background-color: black; color: white; width: 100%;">
-	<p>Powered By: <a href="https://www.petfinder.com">Pet Finder</a> </p>
+<footer style=" position: fixed; bottom: 0; background-color: #BFEDC1; color: white; width: 100%;">
+	<p><strong>Powered By: <a href="https://www.petfinder.com">Pet Finder</a> </strong></p>
 	<button>
 		<% if current_user %>
     		<%= link_to "Logout", session_path("current"), method: :delete %>
  		 <% end %>
 	</button>
 </footer>
+
+<!--needs visibility toggle and priority over fence on home page -->
